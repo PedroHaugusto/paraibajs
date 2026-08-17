@@ -1,26 +1,208 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  ParaibaJS — sistema visual
+  ---------------------------------------------------------------------------
+  O site vive sempre no escuro (breu). Seções claras se marcam com a classe
+  `.claro`, que reescreve os mesmos tokens — assim qualquer componente shadcn
+  dentro dela se adapta sem precisar de override.
+
+  Contraste medido (WCAG 2.1):
+    cal   sobre breu ......... 17.6:1
+    mare  sobre breu ..........  5.0:1
+    sol   sobre breu ......... 12.7:1
+    farol sobre breu ..........  4.3:1  <- reprova em texto pequeno
+    #fff  sobre farol .........  4.6:1
+
+  Por isso o vermelho do farol é cor GRÁFICA: massas, barras, display grande
+  (>=24px) e fundo de botão com texto branco puro. Acento em texto pequeno é
+  sempre o `sol`. Não use `text-farol` em corpo de texto.
+*/
 
 @theme inline {
+  /* --- marca ------------------------------------------------------------ */
+  --color-breu: var(--breu);
+  --color-cal: var(--cal);
+  --color-farol: var(--farol);
+  --color-sol: var(--sol);
+  --color-mare: var(--mare);
+  --color-risco: var(--risco);
+
+  /* --- semânticos do shadcn, apontados para a marca --------------------- */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* --- tipografia ------------------------------------------------------- */
+  --font-display: var(--fonte-display);
+  --font-sans: var(--fonte-sans);
+  --font-mono: var(--fonte-mono);
+  --font-heading: var(--fonte-display);
+
+  /* --- geometria: nada arredondado neste site --------------------------- */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  --animate-varredura: varredura 12s linear infinite;
+  --animate-deriva: deriva 60s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --breu: #0b0b0c;
+  --cal: #f4f2ed;
+  --farol: #e5232b;
+  --sol: #ffc940;
+  --mare: #7c8188;
+  --risco: rgba(244, 242, 237, 0.14);
+
+  --background: var(--breu);
+  --foreground: var(--cal);
+  --card: #141416;
+  --card-foreground: var(--cal);
+  --popover: #141416;
+  --popover-foreground: var(--cal);
+  --primary: var(--farol);
+  --primary-foreground: #ffffff;
+  --secondary: #1c1c1f;
+  --secondary-foreground: var(--cal);
+  --muted: #17171a;
+  --muted-foreground: var(--mare);
+  --accent: #1c1c1f;
+  --accent-foreground: var(--sol);
+  --destructive: #ff6b6b;
+  --border: var(--risco);
+  --input: rgba(244, 242, 237, 0.22);
+  --ring: var(--sol);
+  --radius: 0rem;
+}
+
+/*
+  Seção clara. `mare` escurece porque o cinza que funciona sobre o breu cai
+  para 3.5:1 sobre o cal — abaixo do mínimo.
+*/
+.claro {
+  --mare: #5a6068;
+  --risco: rgba(11, 11, 12, 0.16);
+
+  --background: var(--cal);
+  --foreground: var(--breu);
+  --card: #ffffff;
+  --card-foreground: var(--breu);
+  --popover: #ffffff;
+  --popover-foreground: var(--breu);
+  --secondary: #e6e3dc;
+  --secondary-foreground: var(--breu);
+  --muted: #e6e3dc;
+  --muted-foreground: var(--mare);
+  --accent: #e6e3dc;
+  --accent-foreground: var(--breu);
+  --destructive: #b3161d;
+  --border: var(--risco);
+  --input: rgba(11, 11, 12, 0.28);
+  --ring: var(--farol);
+
+  background-color: var(--cal);
+  color: var(--breu);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* O foco precisa aparecer sobre fundo escuro e claro. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--farol);
+    color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /*
+    Display: Archivo no eixo de largura expandido, substituindo a BwStretch da
+    referência. Sem o `font-stretch` o texto sai estreito e perde o bloco.
+  */
+  .display {
+    font-family: var(--fonte-display);
+    font-weight: 800;
+    font-stretch: 125%;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.86;
+  }
+
+  /* Eyebrow / label: mono em caixa alta com tracking largo. */
+  .rotulo {
+    font-family: var(--fonte-mono);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    line-height: 1;
+  }
+
+  /* Régua de 1px usada para separar blocos sem peso visual. */
+  .risco-topo {
+    border-top: 1px solid var(--risco);
+  }
+}
+
+@keyframes varredura {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes deriva {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
