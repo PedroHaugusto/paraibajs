@@ -28,9 +28,9 @@ export default function Links() {
           key={categoria.nome}
           className={indice % 2 === 0 ? "claro" : "bg-breu"}
         >
-          <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-8 md:py-28">
+          <div className="envelope secao">
             <div className="flex flex-col gap-3">
-              <h2 className="display text-[clamp(1.75rem,5vw,3.5rem)]">
+              <h2 className="display titulo-secao">
                 {categoria.nome}
               </h2>
               <p className="text-mare">{categoria.descricao}</p>
@@ -49,7 +49,7 @@ export default function Links() {
                     rel="noreferrer noopener"
                     className="group grid gap-3 border-b border-risco py-8 transition-colors hover:bg-foreground/4 md:grid-cols-[minmax(0,20rem)_1fr_auto] md:items-baseline md:gap-10 md:px-4"
                   >
-                    <span className="display text-xl md:text-2xl">
+                    <span className="display titulo-bloco">
                       {link.titulo}
                     </span>
                     <span className="max-w-2xl leading-relaxed text-mare">
@@ -68,11 +68,11 @@ export default function Links() {
       ))}
 
       <section className="border-t border-risco bg-breu">
-        <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-8">
+        <div className="envelope secao">
           <p className="max-w-2xl text-lg leading-relaxed text-mare">
             Falta alguma coisa que te ajudou de verdade?{" "}
             <a
-              href="/contato"
+              href="/comunidade"
               className="text-sol underline underline-offset-4"
             >
               Manda para a gente

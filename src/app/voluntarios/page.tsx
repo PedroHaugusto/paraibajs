@@ -21,25 +21,25 @@ export default function Voluntarios() {
             Quem faz <span className="text-farol">acontecer</span>
           </>
         }
-        apoio="A ParaibaJS não tem funcionário. Cada encontro sai do trabalho de gente que decidiu doar algumas horas. Abaixo está o que precisa ser feito e quanto tempo cada coisa custa — sem romantizar."
+        apoio="A ParaibaJS não tem funcionário. Cada encontro sai de gente que doou algumas horas. Abaixo, o que precisa ser feito e quanto tempo custa."
       />
 
       {/* --- funções ------------------------------------------------------ */}
       <section className="claro">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-8 md:py-32">
+        <div className="envelope secao">
           <TituloSecao
             rotulo="Funções abertas"
             titulo="Escolha o que combina com você"
             apoio="Ninguém precisa fazer tudo. A maioria das pessoas cuida de uma coisa só, e isso já resolve."
           />
 
-          <ul className="mt-16 flex flex-col border-t border-risco">
+          <ul className="apos-titulo flex flex-col border-t border-risco">
             {funcoes.map((funcao) => (
               <li
                 key={funcao.nome}
                 className="grid gap-4 border-b border-risco py-10 md:grid-cols-[16rem_1fr_16rem] md:gap-10"
               >
-                <h3 className="display text-2xl md:text-3xl">{funcao.nome}</h3>
+                <h3 className="display titulo-bloco">{funcao.nome}</h3>
                 <p className="max-w-xl leading-relaxed text-mare">
                   {funcao.texto}
                 </p>
@@ -54,14 +54,14 @@ export default function Voluntarios() {
 
       {/* --- formulário ---------------------------------------------------- */}
       <section className="bg-breu">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-8 md:py-32">
+        <div className="envelope secao">
           <TituloSecao
             rotulo="Inscrição"
             titulo="Contar com você"
             apoio="Preencha e a organização entra em contato. Não é entrevista: é só para saber quem você é e onde você encaixa."
           />
 
-          <div className="mt-16 max-w-3xl">
+          <div className="apos-titulo max-w-3xl">
             <FormularioVoluntario />
           </div>
         </div>

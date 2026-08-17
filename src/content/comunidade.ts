@@ -80,18 +80,4 @@ export const ecossistema = [
   "WebAssembly",
 ];
 
-/*
-  TODO(dono): substitua pelo próximo encontro real. Com `data` nula a home
-  mostra o estado "ainda não anunciado" em vez de inventar uma data.
-*/
-export type Encontro = {
-  edicao: string;
-  tema: string;
-  data: string | null;
-  horario: string;
-  local: string;
-  endereco: string;
-  urlInscricao: string | null;
-};
-
-export const proximoEncontro: Encontro | null = null;
+/* Os encontros ficam em `eventos.ts`. */

@@ -21,11 +21,9 @@ export function TituloSecao({
   return (
     <div className={cn("flex flex-col gap-5", className)}>
       {rotulo ? <p className="rotulo text-mare">{rotulo}</p> : null}
-      <Tag className="display text-[clamp(2rem,6vw,4.5rem)]">{titulo}</Tag>
+      <Tag className="display titulo-secao">{titulo}</Tag>
       {apoio ? (
-        <p className="max-w-2xl text-base leading-relaxed text-mare md:text-lg">
-          {apoio}
-        </p>
+        <p className="max-w-2xl leading-relaxed text-mare">{apoio}</p>
       ) : null}
     </div>
   );

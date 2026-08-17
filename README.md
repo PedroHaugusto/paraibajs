@@ -1,7 +1,7 @@
 # ParaibaJS
 
-Site da comunidade JavaScript da Paraíba. Centraliza os quatro caminhos de
-entrada: Call For Papers, voluntariado, links úteis e contato.
+Site da comunidade JavaScript da Paraíba. Centraliza os caminhos de entrada:
+eventos, canais da comunidade, Call For Papers, voluntariado e links úteis.
 
 ## Rodando
 
@@ -23,15 +23,25 @@ componente:
 
 | Arquivo | O que controla |
 |---|---|
-| `comunidade.ts` | nome, descrição, canais, ecossistema do letreiro, próximo encontro |
+| `eventos.ts` | os encontros, com data, local, ingresso e a grade de palestras |
+| `comunidade.ts` | nome, descrição, canais e o ecossistema do letreiro |
 | `navegacao.ts` | itens do menu (cabeçalho e rodapé leem daqui) |
 | `cfp.ts` | etapas, prazos, critérios da curadoria e se a chamada está aberta |
 | `funcoes-voluntario.ts` | funções abertas e o custo de tempo de cada uma |
-| `links.ts` | links úteis por categoria |
+| `links.ts` | links úteis e comunidades parceiras, por categoria |
 
-Anunciar um encontro é preencher `proximoEncontro` em `comunidade.ts` — a home
-troca sozinha do estado "ainda sem data" para os dados reais. Fechar o Call For
-Papers é mudar `chamadaAberta` para `false` em `cfp.ts`.
+**Anunciar um encontro** é acrescentar um item ao array `eventos` (há um
+exemplo do formato comentado no arquivo). A home sai sozinha do estado "ainda
+sem data", a página de eventos lista o encontro, e no dia seguinte ele migra
+para "já aconteceram" sem ninguém precisar mexer — a comparação usa o fuso da
+Paraíba, não o do servidor.
+
+**A programação** é o campo opcional `programacao` do evento. Item sem
+`palestrante` é momento (credenciamento, abertura, encerramento) e sai
+discreto; com `palestrante`, vira palestra em destaque. A contagem de palestras
+que aparece no cartão sai daí sozinha — não há número escrito à mão.
+
+**Fechar o Call For Papers** é mudar `chamadaAberta` para `false` em `cfp.ts`.
 
 Procure por `TODO(dono)` para achar tudo que ainda é placeholder.
 

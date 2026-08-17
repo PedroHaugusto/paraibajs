@@ -96,20 +96,20 @@ export const categorias: Categoria[] = [
     ],
   },
   {
-    nome: "Comunidades vizinhas",
-    descricao: "Gente boa fazendo coisa parecida em outros lugares.",
+    nome: "Comunidades parceiras",
+    descricao: "Com quem a gente divide palco, público e sala aqui na Paraíba.",
     links: [
       {
-        titulo: "BrazilJS",
-        url: "https://braziljs.org/",
+        titulo: "CRUDPB",
+        url: "https://crudpb.org/",
         porque:
-          "A comunidade JavaScript brasileira mais antiga em atividade, com conteúdo e eventos nacionais.",
+          "A comunidade guarda-chuva que reúne os grupos de tecnologia da Paraíba. Cada comunidade mantém seu grupo, e o CRUDPB conecta todo mundo.",
       },
       {
-        titulo: "Front-end Brasil",
-        url: "https://github.com/frontendbr/forum",
+        titulo: "GDG João Pessoa",
+        url: "https://gdg.community.dev/gdg-joao-pessoa/",
         porque:
-          "Fórum no GitHub onde dá para perguntar em português e receber resposta de gente sênior.",
+          "O Google Developers Group daqui. Traz o Google I/O Extended, o Build With AI e outros eventos que valem a viagem até a capital.",
       },
     ],
   },

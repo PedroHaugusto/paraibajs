@@ -15,8 +15,8 @@ export function Rodape() {
         Américas, então o sol nasce ali antes de qualquer outro lugar do
         continente.
       */}
-      <section className="mx-auto max-w-[1400px] px-5 py-20 md:px-8 md:py-28">
-        <p className="display text-[clamp(2.5rem,10vw,8.5rem)]">
+      <section className="envelope secao">
+        <p className="display titulo-capa">
           O sol nasce
           <br />
           primeiro <span className="text-farol">aqui</span>
@@ -26,7 +26,7 @@ export function Rodape() {
             variant="farol"
             size="xl"
             nativeButton={false}
-            render={<Link href="/contato" />}
+            render={<Link href="/comunidade" />}
           >
             Entrar na comunidade
             <ArrowUpRightIcon data-icon="inline-end" />
@@ -43,7 +43,7 @@ export function Rodape() {
       </section>
 
       <div className="border-t border-risco">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-14 md:grid-cols-[1.5fr_1fr_1fr] md:px-8">
+        <div className="envelope grid gap-12 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
             <Simbolo className="size-12" />
             <p className="max-w-xs text-sm leading-relaxed text-mare">
@@ -94,7 +94,7 @@ export function Rodape() {
       </div>
 
       <div className="border-t border-risco">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-2 px-5 py-6 text-xs text-mare sm:flex-row sm:items-center sm:justify-between md:px-8">
+        <div className="envelope flex flex-col gap-2 py-6 text-xs text-mare sm:flex-row sm:items-center sm:justify-between md:px-8">
           <p>
             © {new Date().getFullYear()} {comunidade.nome}. Feito pela
             comunidade, para a comunidade.

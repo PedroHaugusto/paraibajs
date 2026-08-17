@@ -45,13 +45,13 @@ export function Cabecalho() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-risco bg-breu/85 text-cal backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-6 px-5 md:px-8">
+      <div className="envelope flex h-16 items-center justify-between gap-6">
         <Link href="/" className="shrink-0" aria-label={`${comunidade.nome} — início`}>
           <Marca />
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-9">
+          <ul className="flex items-center gap-6 xl:gap-9">
             {navegacao.map((item) => (
               <li key={item.href}>
                 <Link
@@ -107,7 +107,7 @@ export function Cabecalho() {
                               caminho === item.href ? "page" : undefined
                             }
                             className={cn(
-                              "display block py-5 text-2xl",
+                              "display titulo-bloco block py-5",
                               caminho === item.href && "text-farol",
                             )}
                           />

@@ -18,7 +18,7 @@ export function Letreiro({
     <ul className="flex shrink-0 items-center">
       {itens.map((item) => (
         <li key={item} className="flex items-center gap-8 px-4">
-          <span className="display text-2xl whitespace-nowrap md:text-3xl">
+          <span className="display titulo-bloco whitespace-nowrap">
             {item}
           </span>
           {/*

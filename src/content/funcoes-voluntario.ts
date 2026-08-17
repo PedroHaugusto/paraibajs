@@ -1,8 +1,8 @@
 /*
-  Funções de voluntariado.
+  Funções de voluntariado abertas.
 
-  TODO(dono): ajuste a lista e principalmente o campo `custo` — a estimativa
-  de tempo precisa ser honesta, senão o voluntário desiste no meio.
+  TODO(dono): revise principalmente o campo `custo` — a estimativa de tempo
+  precisa ser honesta, senão o voluntário desiste no meio.
 */
 
 export type Funcao = {
@@ -13,9 +13,9 @@ export type Funcao = {
 
 export const funcoes: Funcao[] = [
   {
-    nome: "Recepção",
+    nome: "Check-In",
     texto:
-      "Receber quem chega, conferir a lista, entregar crachá e apontar onde fica o banheiro. É a primeira cara da comunidade.",
+      "Receber quem chega, conferir a lista de inscritos, entregar crachá e apontar onde fica o banheiro. É a primeira cara da comunidade para quem nunca veio.",
     custo: "As duas primeiras horas do encontro",
   },
   {
@@ -31,21 +31,9 @@ export const funcoes: Funcao[] = [
     custo: "Duas a três horas por mês",
   },
   {
-    nome: "Curadoria",
+    nome: "Parceria",
     texto:
-      "Ler as propostas do Call For Papers, dar retorno a quem enviou e ajudar palestrante de primeira viagem a ensaiar.",
-    custo: "Concentrado nas semanas antes do encontro",
-  },
-  {
-    nome: "Infraestrutura",
-    texto:
-      "Cuidar de projetor, som, cabo, wi-fi e do plano B quando algo disso falhar. Sempre falha.",
-    custo: "Uma hora antes e durante o encontro",
-  },
-  {
-    nome: "Parcerias",
-    texto:
-      "Conversar com empresas sobre espaço, comida e patrocínio. Bom para quem gosta de falar com gente.",
+      "Conversar com empresas sobre espaço, comida e patrocínio, e manter a ponte com as comunidades parceiras. Bom para quem gosta de falar com gente.",
     custo: "Algumas conversas por mês",
   },
 ];

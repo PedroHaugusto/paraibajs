@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
 
-import { FeixeDoFarol } from "@/components/site/feixe-do-farol";
+import { CartaoDeEvento } from "@/components/site/cartao-de-evento";
 import { Letreiro } from "@/components/site/letreiro";
+import { MalhaHexagonal } from "@/components/site/malha-hexagonal";
 import { TituloSecao } from "@/components/site/titulo-secao";
 import { Button } from "@/components/ui/button";
-import {
-  canais,
-  comunidade,
-  ecossistema,
-  proximoEncontro,
-} from "@/content/comunidade";
+import { canais, comunidade, ecossistema } from "@/content/comunidade";
+import { proximoEvento } from "@/content/eventos";
 import { nascerDoSol } from "@/lib/sol";
 
 const pilares = [
@@ -33,6 +30,13 @@ const pilares = [
 
 const portas = [
   {
+    rotulo: "Entre",
+    titulo: "Comunidade",
+    texto:
+      "WhatsApp, Instagram, GitHub e o e-mail da organização. Nenhum exige convite.",
+    href: "/comunidade",
+  },
+  {
     rotulo: "Palestre",
     titulo: "Call For Papers",
     texto:
@@ -49,48 +53,48 @@ const portas = [
     rotulo: "Aprenda",
     titulo: "Links úteis",
     texto:
-      "O que a comunidade indica para estudar, construir e se manter em dia.",
+      "O que a comunidade indica para estudar, e as comunidades parceiras daqui.",
     href: "/links",
-  },
-  {
-    rotulo: "Fale com a gente",
-    titulo: "Contato",
-    texto: "Canais diretos da organização, parceria e patrocínio.",
-    href: "/contato",
   },
 ];
 
 export default function Home() {
   const horaDoNascer = nascerDoSol();
+  const proximo = proximoEvento();
   const grupo = canais[0];
 
   return (
     <>
       {/* --- hero ------------------------------------------------------- */}
       <section className="relative overflow-hidden bg-breu">
-        <FeixeDoFarol className="top-[-35%] left-[38%] h-[150%] w-[95%]" />
+        {/*
+          A malha passa atrás do lettering de propósito — é assim que o padrão
+          hexagonal aparece no material gráfico do evento. A opacidade contida
+          é o que impede de virar ruído em cima do texto.
+        */}
+        <MalhaHexagonal className="top-1/2 -right-44 h-[95%] w-auto -translate-y-1/2 opacity-35 md:-right-32 md:h-[125%] md:opacity-60" />
 
-        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1400px] flex-col justify-center px-5 py-24 md:px-8">
+        <div className="envelope secao relative flex min-h-[calc(100svh-var(--altura-do-topo))] flex-col justify-center">
           <p className="rotulo text-sol">
             {horaDoNascer
               ? `O sol nasce às ${horaDoNascer} na Ponta do Seixas`
               : "Ponta do Seixas, o ponto mais oriental das Américas"}
           </p>
 
-          <h1 className="display mt-8 max-w-[14ch] text-[clamp(2.75rem,12vw,9.5rem)]">
+          <h1 className="display titulo-hero mt-6 max-w-[16ch]">
             Onde o <span className="text-farol">JS</span> nasce primeiro
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-mare md:text-xl">
+          <p className="mt-7 max-w-xl leading-relaxed text-mare md:text-lg">
             {comunidade.descricao}
           </p>
 
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <Button
               variant="farol"
               size="xl"
               nativeButton={false}
-              render={<Link href="/contato" />}
+              render={<Link href="/comunidade" />}
             >
               Entrar na comunidade
               <ArrowRightIcon data-icon="inline-end" />
@@ -111,7 +115,7 @@ export default function Home() {
 
       {/* --- o que é ---------------------------------------------------- */}
       <section className="claro">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-8 md:py-32">
+        <div className="envelope secao">
           <TituloSecao
             rotulo="Isso é a ParaibaJS"
             titulo={
@@ -123,7 +127,7 @@ export default function Home() {
             }
           />
 
-          <div className="mt-16 grid gap-px border border-risco bg-risco md:grid-cols-3">
+          <div className="apos-titulo grid gap-px border border-risco bg-risco md:grid-cols-3">
             {pilares.map((pilar) => (
               <article key={pilar.titulo} className="bg-cal p-8 md:p-10">
                 <h3 className="rotulo">{pilar.titulo}</h3>
@@ -136,14 +140,14 @@ export default function Home() {
 
       {/* --- portas de entrada ------------------------------------------ */}
       <section className="bg-breu">
-        <div className="mx-auto max-w-[1400px] px-5 py-24 md:px-8 md:py-32">
+        <div className="envelope secao">
           <TituloSecao
             rotulo="Por onde entrar"
             titulo="Escolha uma porta"
             apoio="Cada uma leva a um jeito diferente de participar. Nenhuma exige convite."
           />
 
-          <div className="mt-16 grid gap-px border border-risco bg-risco md:grid-cols-2">
+          <div className="apos-titulo grid gap-px border border-risco bg-risco md:grid-cols-2">
             {portas.map((porta) => (
               <Link
                 key={porta.href}
@@ -152,7 +156,7 @@ export default function Home() {
               >
                 <div>
                   <p className="rotulo text-sol">{porta.rotulo}</p>
-                  <h3 className="display mt-6 text-[clamp(1.75rem,4vw,3rem)]">
+                  <h3 className="display titulo-bloco mt-5">
                     {porta.titulo}
                   </h3>
                   <p className="mt-4 max-w-sm leading-relaxed text-mare">
@@ -168,37 +172,28 @@ export default function Home() {
 
       {/* --- próximo encontro ------------------------------------------- */}
       <section className="border-t border-risco bg-breu">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-5 py-24 md:grid-cols-2 md:px-8 md:py-32">
+        <div className="envelope secao">
+          {/* O nome do evento é do cartão; o título da seção não o repete. */}
           <TituloSecao
             rotulo="Próximo encontro"
-            titulo={proximoEncontro ? proximoEncontro.tema : "Ainda sem data"}
+            titulo={proximo ? "Vem aí" : "Ainda sem data"}
             apoio={
-              proximoEncontro
-                ? `${proximoEncontro.local} — ${proximoEncontro.endereco}`
+              proximo
+                ? undefined
                 : "O próximo encontro ainda não foi anunciado. Quem está no grupo do WhatsApp fica sabendo primeiro."
             }
           />
 
-          <div className="flex flex-col justify-end gap-8">
-            {proximoEncontro ? (
-              <dl className="flex flex-col gap-5 border-t border-risco pt-8">
-                <div className="flex items-baseline justify-between gap-4">
-                  <dt className="rotulo text-mare">Data</dt>
-                  <dd className="display text-2xl">{proximoEncontro.data}</dd>
-                </div>
-                <div className="flex items-baseline justify-between gap-4">
-                  <dt className="rotulo text-mare">Horário</dt>
-                  <dd className="display text-2xl">
-                    {proximoEncontro.horario}
-                  </dd>
-                </div>
-              </dl>
-            ) : null}
+          {proximo ? (
+            <div className="apos-titulo border-t border-risco">
+              <CartaoDeEvento evento={proximo} />
+            </div>
+          ) : null}
 
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <Button
-              variant="contorno"
+              variant={proximo ? "contorno" : "farol"}
               size="xl"
-              className="self-start"
               nativeButton={false}
               render={
                 <a href={grupo.url} target="_blank" rel="noreferrer noopener" />
@@ -206,6 +201,14 @@ export default function Home() {
             >
               Entrar no grupo
               <ArrowUpRightIcon data-icon="inline-end" />
+            </Button>
+            <Button
+              variant="contorno"
+              size="xl"
+              nativeButton={false}
+              render={<Link href="/eventos" />}
+            >
+              {proximo?.programacao ? "Ver a programação" : "Ver todos os eventos"}
             </Button>
           </div>
         </div>

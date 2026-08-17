@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Archivo, Space_Grotesk, Space_Mono } from "next/font/google";
 
 import { Cabecalho } from "@/components/site/cabecalho";
+import { FaixaDeAnuncio } from "@/components/site/faixa-de-anuncio";
 import { Rodape } from "@/components/site/rodape";
 import { Toaster } from "@/components/ui/toast";
 import { comunidade } from "@/content/comunidade";
+import { proximoEvento } from "@/content/eventos";
 import "./globals.css";
 
 /*
@@ -48,10 +50,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  /* A faixa muda a altura do topo, e o hero desconta esse valor. */
+  const temFaixa = Boolean(proximoEvento()?.urlIngressos);
+
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${corpo.variable} ${mono.variable} h-full`}
+      className={`${display.variable} ${corpo.variable} ${mono.variable} h-full ${
+        temFaixa ? "com-faixa" : ""
+      }`}
     >
       <body className="flex min-h-full flex-col">
         <a
@@ -60,6 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Pular para o conteúdo
         </a>
+        <FaixaDeAnuncio />
         <Cabecalho />
         <main id="conteudo" className="flex-1">
           {children}

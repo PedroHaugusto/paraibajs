@@ -29,6 +29,7 @@
   --color-sol: var(--sol);
   --color-mare: var(--mare);
   --color-risco: var(--risco);
+  --color-acento-texto: var(--acento-texto);
 
   /* --- semânticos do shadcn, apontados para a marca --------------------- */
   --color-background: var(--background);
@@ -65,7 +66,6 @@
   --radius-3xl: 0px;
   --radius-4xl: 0px;
 
-  --animate-varredura: varredura 12s linear infinite;
   --animate-deriva: deriva 60s linear infinite;
 }
 
@@ -76,6 +76,12 @@
   --sol: #ffc940;
   --mare: #7c8188;
   --risco: rgba(244, 242, 237, 0.14);
+  /*
+    Acento para TEXTO, que troca com o fundo. Nem `farol` nem `sol` servem nos
+    dois: o vermelho sobre o breu dá 4.3:1 e o amarelo sobre o cal, 1.4:1.
+    Use `text-acento-texto` em vez de escolher a cor à mão.
+  */
+  --acento-texto: var(--sol);
 
   --background: var(--breu);
   --foreground: var(--cal);
@@ -96,6 +102,17 @@
   --input: rgba(244, 242, 237, 0.22);
   --ring: var(--sol);
   --radius: 0rem;
+
+  /*
+    Altura do que fica acima do conteúdo. O hero desconta este valor para
+    ocupar exatamente uma tela; a classe `.com-faixa`, aplicada no <html>
+    quando existe evento anunciado, soma a faixa de anúncio.
+  */
+  --altura-do-topo: 4rem;
+}
+
+.com-faixa {
+  --altura-do-topo: 6.5rem;
 }
 
 /*
@@ -105,6 +122,8 @@
 .claro {
   --mare: #5a6068;
   --risco: rgba(11, 11, 12, 0.16);
+  /* Vermelho escurecido: o da marca daria 4.1:1 sobre o cal. Este dá 6.2:1. */
+  --acento-texto: #b3161d;
 
   --background: var(--cal);
   --foreground: var(--breu);
@@ -161,6 +180,90 @@
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 0.86;
+    /*
+      Distribui as linhas em vez de encher a primeira e largar o resto na
+      última. Sem isso, "Quando a gente se vê" quebra deixando "VÊ" sozinho.
+    */
+    text-wrap: balance;
+  }
+
+  /*
+    Escala do display: QUATRO degraus, e nada fora deles.
+
+    Todo título do site usa uma destas classes. Antes cada página escolhia seu
+    próprio `text-2xl` ou `clamp`, e o resultado era um tamanho diferente por
+    tela — dois blocos de mesma importância saíam com pesos diferentes.
+
+    A razão entre degraus é ~1,4, e os tetos são modestos de propósito: em
+    tela larga um título de 150px come a dobra inteira. Os pisos garantem
+    presença no telefone.
+
+      hero   84px │ só o topo da home
+      capa   56px │ h1 das páginas internas e o fecho do rodapé
+      seção  40px │ h2 de seção e números de destaque (dia, etapa)
+      bloco  28px │ h3 de card, nome, canal, função, título de evento
+
+    A única exceção é o lettering da marca no cabeçalho, que é logotipo e tem
+    tamanho próprio.
+  */
+  .titulo-hero {
+    font-size: clamp(2.5rem, 6.5vw, 5.25rem);
+  }
+
+  .titulo-capa {
+    font-size: clamp(1.875rem, 4.6vw, 3.5rem);
+  }
+
+  .titulo-secao {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .titulo-bloco {
+    font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+  }
+
+  /*
+    Ritmo vertical e largura do conteúdo, em um lugar só.
+
+    Antes cada página repetia `mx-auto max-w-[1400px] px-5 py-20 md:px-8
+    md:py-28` à mão, e bastava um número divergir para a página inteira sair
+    do compasso — foi assim que as telas ficaram desiguais.
+
+      .envelope  largura máxima e recuo lateral
+      .secao     respiro vertical entre blocos
+      .abertura  respiro menor, para a capa das páginas internas
+  */
+  .envelope {
+    margin-inline: auto;
+    max-width: 1400px;
+    padding-inline: 1.25rem;
+  }
+
+  .secao {
+    padding-block: 5rem;
+  }
+
+  .abertura {
+    padding-block: 4rem;
+  }
+
+  @media (width >= 48rem) {
+    .envelope {
+      padding-inline: 2rem;
+    }
+
+    .secao {
+      padding-block: 7rem;
+    }
+
+    .abertura {
+      padding-block: 5.5rem;
+    }
+  }
+
+  /* Distância fixa entre o cabeçalho de uma seção e o conteúdo dela. */
+  .apos-titulo {
+    margin-top: 3.5rem;
   }
 
   /* Eyebrow / label: mono em caixa alta com tracking largo. */
@@ -178,12 +281,14 @@
   }
 }
 
-@keyframes varredura {
-  from {
-    transform: rotate(0deg);
+/* Hexágonos da malha acendendo e apagando. */
+@keyframes pulsar {
+  0%,
+  100% {
+    opacity: 0.1;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    opacity: 0.55;
   }
 }
 

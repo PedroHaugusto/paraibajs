@@ -121,7 +121,7 @@ export function ConfirmacaoDeEnvio({
       <span className="flex size-12 items-center justify-center bg-farol text-white">
         <CheckIcon className="size-6" />
       </span>
-      <h3 className="display text-[clamp(1.75rem,4vw,2.75rem)]">{titulo}</h3>
+      <h3 className="display titulo-bloco">{titulo}</h3>
       <p className="max-w-md leading-relaxed text-mare">{texto}</p>
       {children}
     </div>
