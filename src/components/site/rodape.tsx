@@ -45,7 +45,7 @@ export function Rodape() {
       <div className="border-t border-risco">
         <div className="envelope grid gap-12 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
-            <Simbolo className="size-12" />
+            <Simbolo className="h-12 w-auto" />
             <p className="max-w-xs text-sm leading-relaxed text-mare">
               {comunidade.descricao}
             </p>

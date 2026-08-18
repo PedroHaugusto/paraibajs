@@ -20,11 +20,12 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         /*
           Variantes da ParaibaJS. `farol` é o CTA primário: bloco vermelho
-          com texto branco puro — #fff em vez de `cal` porque só o branco
-          puro cruza 4.5:1 sobre o vermelho da marca.
+          com texto branco puro. Usa `farol-solido` (não `farol`) porque o
+          vermelho oficial da marca só dá 4.24:1 com branco em cima — abaixo
+          do mínimo de texto normal.
         */
         farol:
-          "bg-farol font-bold tracking-[-0.03em] text-white uppercase hover:bg-cal hover:text-breu",
+          "bg-farol-solido font-bold tracking-[-0.03em] text-white uppercase hover:bg-cal hover:text-breu",
         contorno:
           "border-current font-bold tracking-[-0.03em] uppercase hover:bg-foreground hover:text-background",
       },

@@ -1,54 +1,13 @@
-import { cn } from "@/lib/utils";
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="844.000000pt" height="956.000000pt" viewBox="0 0 844.000000 956.000000"
+ preserveAspectRatio="xMidYMid meet">
 
-/*
-  Símbolo oficial — silhueta monocromática, extraída do arquivo que veio da
-  organização (`public/marca/logo-nome-branco.svg`, export do Illustrator em
-  preto sólido, pensado pra ser tingido de branco em fundo escuro).
-
-  A primeira tentativa foi usar a arte colorida original (preto/vermelho/
-  degradê): em 32–48px virava mancha ilegível, porque o problema real era
-  densidade de traço fino (vidro da lanterna, a asa cruzando o hexágono), não
-  a cor. A versão monocromática resolve isso sem simplificar NADA à mão: os
-  mesmos três `path`s do hexágono e do farol, na mesma geometria — só que sem
-  precisar discriminar matiz pixel a pixel, uma silhueta lê limpo em tamanho
-  pequeno onde um preenchimento multicor não lê. Testado renderizando no
-  tamanho real de tela (37×36px) e amostrando os pixels antes de trocar.
-
-  `fill="currentColor"` no lugar do preto fixo do arquivo original: os dois
-  usos (cabeçalho, rodapé) já têm `text-cal` no ancestral, então o símbolo
-  herda a cor sem precisar de classe própria — e funciona em qualquer fundo
-  novo que apareça no futuro.
-
-  O arquivo trazia mais 3 `path`s formando um "js" separado, posicionado à
-  direita do hexágono — provavelmente para compor com uma peça de texto que
-  não temos aqui. Ficaram de fora: o "JS" já existe como texto ao lado, em
-  `Marca`, e incluir os dois seria redundante.
-
-  `viewBox="0 0 844 822"`: a arte real (hexágono + farol) é quase quadrada,
-  não a proporção 844×956 do arquivo original — o resto da altura era espaço
-  vazio depois de remover o "js" separado.
-*/
-export function Simbolo({
-  className,
-  titulo = "ParaibaJS",
-}: {
-  className?: string;
-  titulo?: string;
-}) {
-  return (
-    <svg
-      viewBox="0 0 844 822"
-      role="img"
-      aria-label={titulo}
-      className={cn("block self-start", className)}
-    >
-      <g
-        transform="translate(0,956) scale(0.1,-0.1)"
-        fill="currentColor"
-        stroke="none"
-      >
-        <path
-          d="M3535 9550 c-132 -20 -201 -50 -455 -200 -267 -157 -774 -455 -1065
+<g transform="translate(0.000000,956.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M3535 9550 c-132 -20 -201 -50 -455 -200 -267 -157 -774 -455 -1065
 -625 -148 -87 -578 -338 -955 -558 -377 -220 -716 -420 -755 -446 -137 -89
 -228 -206 -281 -361 -18 -53 -19 -123 -19 -1895 l0 -1840 22 -70 c12 -38 38
 -97 58 -130 76 -126 155 -188 505 -395 96 -56 238 -141 315 -188 77 -47 156
@@ -76,10 +35,8 @@ l93 37 0 1021 c0 977 -1 1024 -19 1096 -34 130 -101 242 -194 320 -59 50 -146
 7 10 3 25 -7 1568 -227 1570 -224 1 2 64 97 141 212 76 116 142 214 145 218 3
 5 37 -3 75 -17 38 -15 134 -51 213 -81 237 -90 755 -297 769 -307 7 -6 12 -34
 12 -72 0 -34 2 -64 5 -66 5 -6 59 -1 643 56 249 25 460 45 469 45 33 0 -5 20
--257 135 -140 65 -259 120 -265 123 -8 5 1657 842 1676 842 5 0 9 -40 9 -88z"
-        />
-        <path
-          d="M3674 8340 c-4 -30 -7 -59 -6 -64 2 -4 -2 -14 -8 -21 -6 -7 -8 -19
+-257 135 -140 65 -259 120 -265 123 -8 5 1657 842 1676 842 5 0 9 -40 9 -88z"/>
+<path d="M3674 8340 c-4 -30 -7 -59 -6 -64 2 -4 -2 -14 -8 -21 -6 -7 -8 -19
 -5 -28 11 -28 -205 -267 -242 -267 -15 0 -17 -16 -3 -25 6 -4 10 -76 10 -183
 l0 -177 -85 -25 -85 -25 0 -137 c0 -76 2 -138 3 -138 2 0 48 14 103 32 97 31
 104 31 314 34 l215 4 118 -34 c64 -18 119 -31 121 -27 6 11 1 259 -5 265 -4 4
@@ -91,31 +48,20 @@ c28 6 58 11 65 12 9 1 12 -36 12 -152z m180 -2 l0 -155 -75 0 -75 0 0 155 0
 -11 3 -156z m-498 -298 l0 -59 -42 -11 c-24 -6 -51 -13 -60 -16 -16 -5 -18 2
 -18 55 l0 60 48 14 c73 23 72 24 72 -43z m623 44 c24 -6 27 -11 28 -48 0 -22
 2 -49 4 -58 4 -21 -13 -23 -67 -7 l-38 10 0 61 c0 58 1 60 23 54 12 -4 34 -9
-50 -12z"
-        />
-        <path
-          d="M3670 5298 c-261 -65 -479 -123 -484 -129 -8 -7 -144 -1381 -146
+50 -12z"/>
+<path d="M3670 5298 c-261 -65 -479 -123 -484 -129 -8 -7 -144 -1381 -146
 -1466 0 -23 2 -23 138 -23 l137 0 488 187 c474 182 487 187 487 213 0 23 -135
-1272 -142 1322 -3 14 -70 -1 -478 -104z"
-        />
-      </g>
-    </svg>
-  );
-}
-
-export function Marca({
-  className,
-  classNameTexto,
-}: {
-  className?: string;
-  classNameTexto?: string;
-}) {
-  return (
-    <span className={cn("flex items-center gap-2.5", className)}>
-      <Simbolo className="h-9 w-auto shrink-0" />
-      <span className={cn("display text-xl leading-none", classNameTexto)}>
-        Paraiba<span className="text-farol">JS</span>
-      </span>
-    </span>
-  );
-}
+1272 -142 1322 -3 14 -70 -1 -478 -104z"/>
+<path d="M5653 1238 c-22 -11 -53 -63 -53 -91 0 -84 90 -133 170 -92 61 32 61
+151 0 182 -30 15 -87 16 -117 1z"/>
+<path d="M6131 969 c-71 -14 -130 -48 -159 -92 -23 -34 -27 -51 -27 -112 0
+-63 3 -76 28 -108 35 -46 64 -61 186 -97 128 -39 164 -83 105 -129 -48 -37
+-178 -26 -275 24 l-28 15 -7 -37 c-3 -21 -10 -56 -14 -78 -10 -46 -9 -47 70
+-72 39 -12 88 -18 166 -18 107 0 113 1 179 35 88 45 115 90 115 189 0 115 -43
+156 -217 210 -115 35 -136 54 -109 96 21 32 73 41 161 28 39 -6 77 -12 85 -14
+10 -3 18 14 29 64 8 37 11 70 8 73 -3 4 -34 12 -69 20 -70 15 -161 16 -227 3z"/>
+<path d="M5610 606 l0 -355 -23 -27 c-19 -22 -32 -27 -68 -26 -24 0 -51 2 -58
+4 -20 4 -48 -139 -31 -156 7 -7 50 -11 108 -11 79 0 104 4 137 22 51 27 79 57
+104 113 20 43 21 64 21 418 l0 372 -95 0 -95 0 0 -354z"/>
+</g>
+</svg>

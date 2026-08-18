@@ -118,7 +118,7 @@ export function ConfirmacaoDeEnvio({
       role="status"
       className="flex flex-col items-start gap-6 border border-risco p-8 md:p-12"
     >
-      <span className="flex size-12 items-center justify-center bg-farol text-white">
+      <span className="flex size-12 items-center justify-center bg-farol-solido text-white">
         <CheckIcon className="size-6" />
       </span>
       <h3 className="display titulo-bloco">{titulo}</h3>

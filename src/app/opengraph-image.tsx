@@ -27,7 +27,7 @@ export default function Og() {
         }}
       >
         {/* faixa do farol */}
-        <div style={{ display: "flex", height: 12, width: 220, background: "#e5232b" }} />
+        <div style={{ display: "flex", height: 12, width: 220, background: "#ed292f" }} />
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div
@@ -74,7 +74,7 @@ export default function Og() {
               textTransform: "uppercase",
             }}
           >
-            Paraiba<span style={{ color: "#e5232b" }}>JS</span>
+            Paraiba<span style={{ color: "#ed292f" }}>JS</span>
           </div>
           <div style={{ display: "flex", fontSize: 24, color: "#7c8188" }}>
             A comunidade JavaScript da Paraíba

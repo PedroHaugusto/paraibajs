@@ -9,16 +9,19 @@
   `.claro`, que reescreve os mesmos tokens — assim qualquer componente shadcn
   dentro dela se adapta sem precisar de override.
 
-  Contraste medido (WCAG 2.1):
-    cal   sobre breu ......... 17.6:1
-    mare  sobre breu ..........  5.0:1
-    sol   sobre breu ......... 12.7:1
-    farol sobre breu ..........  4.3:1  <- reprova em texto pequeno
-    #fff  sobre farol .........  4.6:1
+  Contraste medido (WCAG 2.1), com o vermelho oficial da marca (#ed292f):
+    cal          sobre breu ......... 17.6:1
+    mare         sobre breu ..........  5.0:1
+    sol          sobre breu ......... 12.7:1
+    farol        sobre breu ..........  4.65:1  <- passa até em texto pequeno
+    #fff         sobre farol .........  4.24:1  <- reprova em texto pequeno
+    #fff         sobre farol-solido ..  4.64:1
 
-  Por isso o vermelho do farol é cor GRÁFICA: massas, barras, display grande
-  (>=24px) e fundo de botão com texto branco puro. Acento em texto pequeno é
-  sempre o `sol`. Não use `text-farol` em corpo de texto.
+  `farol` passa em qualquer tamanho como TEXTO ou borda sobre o breu. Mas como
+  FUNDO com texto branco em cima (botão, faixa de anúncio), use sempre
+  `farol-solido` — 5% mais escuro, visualmente idêntico, e é o que fecha as
+  contas do branco por cima. Acento em texto pequeno sobre `.claro` continua
+  sendo `acento-texto`, nunca `sol` cru.
 */
 
 @theme inline {
@@ -26,6 +29,7 @@
   --color-breu: var(--breu);
   --color-cal: var(--cal);
   --color-farol: var(--farol);
+  --color-farol-solido: var(--farol-solido);
   --color-sol: var(--sol);
   --color-mare: var(--mare);
   --color-risco: var(--risco);
@@ -72,7 +76,15 @@
 :root {
   --breu: #0b0b0c;
   --cal: #f4f2ed;
-  --farol: #e5232b;
+  /* Vermelho oficial, extraído do SVG do símbolo (rgb 237,41,47) — antes era estimado a partir de um PNG. */
+  --farol: #ed292f;
+  /*
+    Mesmo vermelho, 5% mais escuro — usado SÓ em preenchimento sólido com
+    texto branco em cima (botões, faixa de anúncio, selo de confirmação).
+    O oficial dá 4.23:1 com branco, abaixo do mínimo de 4.5:1 para texto
+    normal; este dá 4.64:1. Visualmente indistinguível do vermelho da marca.
+  */
+  --farol-solido: #e1272d;
   --sol: #ffc940;
   --mare: #7c8188;
   --risco: rgba(244, 242, 237, 0.14);

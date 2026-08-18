@@ -7,8 +7,9 @@ import { proximoEvento } from "@/content/eventos";
   marcado E com inscrição aberta — sem isso o componente não renderiza nada,
   então nenhuma página precisa saber se deve escondê-la.
 
-  O texto é branco puro, não `cal`: sobre o vermelho da marca só o #fff cruza
-  4.5:1, e aqui o texto é pequeno.
+  O texto é branco puro, não `cal`. O fundo usa `farol-solido`, não `farol`
+  cru: o vermelho oficial só dá 4.24:1 com branco em cima, abaixo do mínimo
+  de texto normal — e aqui o texto é pequeno.
 */
 export function FaixaDeAnuncio() {
   const evento = proximoEvento();
@@ -27,7 +28,7 @@ export function FaixaDeAnuncio() {
       href={evento.urlIngressos}
       target="_blank"
       rel="noreferrer noopener"
-      className="group block bg-farol text-white transition-colors hover:bg-white hover:text-breu"
+      className="group block bg-farol-solido text-white transition-colors hover:bg-white hover:text-breu"
     >
       <div className="envelope flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2.5 text-center">
         <span className="rotulo font-bold">
