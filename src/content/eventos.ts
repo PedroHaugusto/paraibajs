@@ -55,7 +55,7 @@ export const eventos: Evento[] = [
     descricao:
       "O maior evento do ecossistema JavaScript da Paraíba: cinco palestras numa tarde, de memory leak a segurança em Node, com coffee-break para networking, brindes e sorteio de livros. Para estudante, pessoa desenvolvedora ou quem só quer entender do que se trata.",
     urlIngressos: "https://www.sympla.com.br/evento/paraibajs/3494354",
-    preco: "R$ 45",
+    preco: "R$ 50",
     programacao: [
       { horario: "13:00", titulo: "Credenciamento" },
       { horario: "13:40", titulo: "Abertura ParaibaJS" },
